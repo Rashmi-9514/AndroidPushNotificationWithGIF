@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ClevertapExampleApplication</string>
+    <string name="deeplinktitle">Welcome to Deeplink Activity</string>
+    <string name="deeplinksubtitle">Internal deeplink test</string>
+</resources>

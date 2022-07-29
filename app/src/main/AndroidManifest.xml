@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.clevertapexampleapplication">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".application.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ClevertapExampleApplication">
+        <activity
+            android:name=".ProfileMergeCheckActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".DeepLinkActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="www.example.com"
+                    android:scheme="https" />
+                <data
+                    android:host="open.my.app"
+                    android:scheme="app" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+
+        <meta-data
+            android:name="CLEVERTAP_ACCOUNT_ID"
+            android:value="449-WZ4-KK6Z" />
+        <!--<meta-data
+            android:name="CLEVERTAP_ACCOUNT_ID"
+            android:value="W4W-5ZR-4K6Z" />-->
+
+
+        <meta-data
+            android:name="CLEVERTAP_TOKEN"
+            android:value="410-c44" />
+        <!--<meta-data
+            android:name="CLEVERTAP_TOKEN"
+            android:value="215-040" />-->
+
+
+        <service
+            android:name=".fcm.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.clevertap.pushtemplates.PTNotificationIntentService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.clevertap.PT_PUSH_EVENT" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.clevertap.pushtemplates.PTPushNotificationReceiver"
+            android:enabled="true"
+            android:exported="false" />
+        <receiver
+            android:name="com.clevertap.pushtemplates.PushTemplateReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <service
+            android:name="com.clevertap.android.sdk.pushnotification.CTNotificationIntentService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.clevertap.PUSH_EVENT" />
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>
