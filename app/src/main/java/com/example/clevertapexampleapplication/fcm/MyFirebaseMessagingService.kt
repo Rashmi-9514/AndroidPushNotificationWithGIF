@@ -6,11 +6,7 @@ import android.util.Log
 import com.clevertap.android.sdk.CleverTapAPI
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.clevertap.pushtemplates.TemplateRenderer
-
-import com.clevertap.android.sdk.pushnotification.NotificationInfo
-import com.clevertap.pushtemplates.Utils
-import com.clevertap.pushtemplates.Utils.isForPushTemplates
+import com.clevertap.android.sdk.pushnotification.fcm.CTFcmMessageHandler
 
 
 class MyFirebaseMessagingService: FirebaseMessagingService() {
@@ -27,14 +23,9 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
                 }
                 val info = CleverTapAPI.getNotificationInfo(extras)
                 if (info.fromCleverTap) {
-                    if (Utils.isForPushTemplates(extras)) {
-                        TemplateRenderer.createNotification(context, extras)
-                        //TemplateRenderer.createNotification(context, extras, config);
-                    } else {
-                        CleverTapAPI.createNotification(context, extras)
-                    }
+                    CTFcmMessageHandler().createNotification(context, message)
                 }else{
-
+                    //Handle Notification sent from other platforms.
                 }
             }
         } catch (throwable: Throwable) {
@@ -42,6 +33,7 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
         }
     }
     override fun onNewToken(token:String) {
-        CleverTapAPI.getDefaultInstance(this)?.pushFcmRegistrationId(token, true)
+        //CleverTapAPI.getDefaultInstance(this)?.pushFcmRegistrationId(token, true)
+        CTFcmMessageHandler().onNewToken(context,token)
     }
 }
