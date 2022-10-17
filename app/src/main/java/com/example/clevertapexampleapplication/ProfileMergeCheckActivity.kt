@@ -1,27 +1,36 @@
 package com.example.clevertapexampleapplication
 
+import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.clevertap.android.sdk.CTInboxStyleConfig
 import com.clevertap.android.sdk.CleverTapAPI
+import com.clevertap.android.sdk.InAppNotificationButtonListener
 import com.clevertap.android.sdk.displayunits.DisplayUnitListener
 import com.clevertap.android.sdk.displayunits.model.CleverTapDisplayUnit
+import com.clevertap.android.sdk.pushnotification.CTPushNotificationListener
 import com.example.clevertapexampleapplication.application.MyApplication
 import java.util.*
 
 
-class ProfileMergeCheckActivity : AppCompatActivity(), DisplayUnitListener//,CTInboxListener
+class ProfileMergeCheckActivity : AppCompatActivity(), DisplayUnitListener,InAppNotificationButtonListener,
+    CTPushNotificationListener//,CTInboxListener
 {
     private lateinit var btnLogin: Button
     private lateinit var btnPushProfile: Button
+    private lateinit var btnPushEvent: Button
+    private lateinit var btnPushEventProperty: Button
     private lateinit var btnPushCharged: Button
     private lateinit var btnAppInbox: Button
     private lateinit var btnAppInboxRead: Button
     private lateinit var btnOptOut: Button
     private lateinit var btnOffline: Button
     private lateinit var btnNativeDisplay: Button
+    private lateinit var btnGetLocation: Button
     private lateinit var etIdentity: EditText
     private lateinit var etName: EditText
     private lateinit var etEmail: EditText
@@ -34,22 +43,26 @@ class ProfileMergeCheckActivity : AppCompatActivity(), DisplayUnitListener//,CTI
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_merge_check)
         clevertapDefaultInstance = (application as MyApplication).getCleverTapInstance()!!
+        clevertapDefaultInstance.apply {
+            ctPushNotificationListener = this@ProfileMergeCheckActivity
+        }
 
         btnLogin = findViewById(R.id.btnLogin)
         btnPushProfile = findViewById(R.id.btnPushProfile)
+        btnPushEvent = findViewById(R.id.btnPushEvent)
+        btnPushEventProperty = findViewById(R.id.btnPushEventProperty)
         btnPushCharged = findViewById(R.id.btnPushCharged)
         btnAppInbox = findViewById(R.id.btnAppInbox)
         btnAppInboxRead = findViewById(R.id.btnAppInboxRead)
         btnOptOut = findViewById(R.id.btnOptOut)
         btnOffline = findViewById(R.id.btnOffline)
         btnNativeDisplay = findViewById(R.id.btnNativeDisplay)
+        btnGetLocation = findViewById(R.id.btnGetLocation)
 
         etIdentity = findViewById(R.id.etIdentity)
         etName = findViewById(R.id.etName)
         etEmail = findViewById(R.id.etEmail)
         etMobile = findViewById(R.id.etMobile)
-
-
 
         btnLogin.setOnClickListener {
             val profileCreate = HashMap<String, Any>()
@@ -57,6 +70,9 @@ class ProfileMergeCheckActivity : AppCompatActivity(), DisplayUnitListener//,CTI
             profileCreate["Name"] = etName.text.toString()
             profileCreate["Email"] = etEmail.text.toString()
             profileCreate["Phone"] = etMobile.text.toString()
+
+            val otherStuff = arrayOf("Jeans", "Perfume")
+            profileCreate["MyStuff"] = otherStuff
 
             clevertapDefaultInstance.onUserLogin(profileCreate)
 
@@ -71,6 +87,21 @@ class ProfileMergeCheckActivity : AppCompatActivity(), DisplayUnitListener//,CTI
             profileCreate["Phone"] = etMobile.text.toString()
             clevertapDefaultInstance.pushProfile(profileCreate)
         }
+
+        btnPushEvent.setOnClickListener {
+            clevertapDefaultInstance.pushEvent("Product viewed")
+        }
+
+        btnPushEventProperty.setOnClickListener {
+            val prodViewedAction = mapOf(
+                "Product Name" to "Casio Chronograph Watch",
+                "Category" to "Mens Accessories",
+                "Price" to 59.99,
+                "Date" to Date())
+            clevertapDefaultInstance.pushEvent("Product Viewed Event", prodViewedAction)
+        }
+
+
 
         btnPushCharged.setOnClickListener {
             val chargeDetails = HashMap<String, Any>()
@@ -129,7 +160,7 @@ class ProfileMergeCheckActivity : AppCompatActivity(), DisplayUnitListener//,CTI
             Log.i("CleverTap", "getAllInboxMessages :  $c")
             Log.i("CleverTap", "getUnreadInboxMessages :  $d")
             Log.i("CleverTap", "inboxDidInitialize: ")
-            /*CTInboxStyleConfig().apply {
+            CTInboxStyleConfig().apply {
                 tabs = inboxTabs //Do not use this if you don't want to use tabs
                 tabBackgroundColor = "#FF0000"
                 selectedTabIndicatorColor = "#0000FF"
@@ -142,7 +173,7 @@ class ProfileMergeCheckActivity : AppCompatActivity(), DisplayUnitListener//,CTI
                 inboxBackgroundColor = "#00FF00"
                 firstTabTitle = "First Tab"
                 clevertapDefaultInstance.showAppInbox(this) //Opens activity With Tabs
-            }*/
+            }
             //OR
             //cleverTapDefaultInstance.showAppInbox()//Opens Activity with default style config
         }
@@ -171,16 +202,35 @@ class ProfileMergeCheckActivity : AppCompatActivity(), DisplayUnitListener//,CTI
             Log.d("CleverTap", "onCreate: ")
         }
 
+        btnGetLocation.setOnClickListener {
+            val location:Location = clevertapDefaultInstance.location
+            Toast.makeText(applicationContext,"Location: ${location.latitude},${location.longitude}",Toast.LENGTH_LONG).show()
+        }
+
+        clevertapDefaultInstance.setInAppNotificationButtonListener(this)
+        clevertapDefaultInstance.setDisplayUnitListener(this)
 
     }
 
     override fun onDisplayUnitsLoaded(units: ArrayList<CleverTapDisplayUnit>?) {
+        Log.d("CleverTap", "onDisplayUnitsLoaded: ")
         for (i in 0 until units!!.size)
         {
-            val unit = units.get(i)
+            val unit = units[i]
             //prepareDisplayView(unit)
             Log.d("CleverTap", "onDisplayUnitsLoaded: $unit")
         }
+    }
+
+    override fun onInAppButtonClick(payload: HashMap<String, String>?) {
+
+        if(payload != null){
+            //Read the values
+        }
+    }
+
+    override fun onNotificationClickedPayloadReceived(payload: HashMap<String, Any>?) {
+        Log.d("Clevertap", payload.toString())
     }
 
     /*override fun inboxDidInitialize() {

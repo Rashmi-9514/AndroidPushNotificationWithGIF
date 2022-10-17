@@ -29,7 +29,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
@@ -56,7 +55,7 @@
             android:value="449-WZ4-KK6Z" />
         <!--<meta-data
             android:name="CLEVERTAP_ACCOUNT_ID"
-            android:value="W4W-5ZR-4K6Z" />-->
+            android:value="TEST-K7R-64W-566Z" />-->
 
 
         <meta-data
@@ -64,7 +63,7 @@
             android:value="410-c44" />
         <!--<meta-data
             android:name="CLEVERTAP_TOKEN"
-            android:value="215-040" />-->
+            android:value="TEST-046-2a3" />-->
 
 
         <service
@@ -98,6 +97,10 @@
                 <action android:name="com.clevertap.PUSH_EVENT" />
             </intent-filter>
         </service>
+
+        <meta-data
+            android:name="CLEVERTAP_NOTIFICATION_ICON"
+            android:value="burger_icon"/>
 
     </application>
 
