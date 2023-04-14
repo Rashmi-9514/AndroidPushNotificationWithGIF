@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:name=".application.MyApplication"
@@ -14,21 +15,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClevertapExampleApplication">
         <activity
+            android:name=".CustomEventActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ProfileMergeCheckActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".DeepLinkActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
@@ -43,27 +50,15 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
         </activity>
 
+        <!-- Main Account -->
         <meta-data
             android:name="CLEVERTAP_ACCOUNT_ID"
             android:value="449-WZ4-KK6Z" />
-        <!--<meta-data
-            android:name="CLEVERTAP_ACCOUNT_ID"
-            android:value="TEST-K7R-64W-566Z" />-->
-
-
         <meta-data
             android:name="CLEVERTAP_TOKEN"
             android:value="410-c44" />
-        <!--<meta-data
-            android:name="CLEVERTAP_TOKEN"
-            android:value="TEST-046-2a3" />-->
 
 
         <service
@@ -100,8 +95,15 @@
 
         <meta-data
             android:name="CLEVERTAP_NOTIFICATION_ICON"
-            android:value="burger_icon"/>
+            android:value="burger_icon" />
 
+        <!-- Test Account -->
+        <!--<meta-data
+            android:name="CLEVERTAP_ACCOUNT_ID"
+            android:value="TEST-RZ7-Z94-K95Z" />
+        <meta-data
+            android:name="CLEVERTAP_TOKEN"
+            android:value="TEST-4c1-a12" />-->
     </application>
 
 </manifest>

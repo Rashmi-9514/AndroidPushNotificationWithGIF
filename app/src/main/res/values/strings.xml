@@ -2,4 +2,14 @@
     <string name="app_name">ClevertapExampleApplication</string>
     <string name="deeplinktitle">Welcome to Deeplink Activity</string>
     <string name="deeplinksubtitle">Internal deeplink test</string>
+    <string-array name="eventtype">
+        <item>Custom Event</item>
+        <item>Charged Event</item>
+    </string-array>
+
+    <string-array name="datatype">
+        <item>String</item>
+        <item>Integer</item>
+        <item>Double</item>
+    </string-array>
 </resources>

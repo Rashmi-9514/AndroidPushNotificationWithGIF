@@ -26,15 +26,10 @@ class MyApplication :Application() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             CleverTapAPI.createNotificationChannel(baseContext,"promotion","promotion","promotion",
                 NotificationManager.IMPORTANCE_MAX,true)
-
         }
     }
 
     fun getCleverTapInstance(): CleverTapAPI? {
         return cleverTapDefaultInstance
     }
-
-
-
-
 }

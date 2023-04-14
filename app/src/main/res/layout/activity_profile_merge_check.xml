@@ -1,4 +1,4 @@
-    <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -93,6 +93,43 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/btnPushEvent" />
 
+
+
+                <Button
+                    android:id="@+id/btnPushEventForPushNotification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Push Notification"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPushEventProperty" />
+
+                <Button
+                    android:id="@+id/btnPushEventForPushTemplates"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Push Templates"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPushEventForPushNotification" />
+
+                <Button
+                    android:id="@+id/btnPushEventForInApp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="In - App"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPushEventForPushTemplates" />
+
+                <Button
+                    android:id="@+id/btnPushEventForAppInbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="App Inbox"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPushEventForInApp" />
                 <Button
                     android:id="@+id/btnPushCharged"
                     android:layout_width="match_parent"
@@ -100,13 +137,13 @@
                     android:text="Charged"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/btnPushEventProperty" />
+                    app:layout_constraintTop_toBottomOf="@id/btnPushEventForAppInbox" />
 
                 <Button
                     android:id="@+id/btnAppInbox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="App Inbox"
+                    android:text="Open App Inbox"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/btnPushCharged" />
@@ -154,6 +191,25 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/btnNativeDisplay" />
+
+
+                <Button
+                    android:id="@+id/btnPromtNotificationPermission"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Prompt Notification Permission"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnGetLocation" />
+
+                <Button
+                    android:id="@+id/btnRaiseCustomEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Raise Custom Event"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPromtNotificationPermission" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
