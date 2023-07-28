@@ -2,4 +2,21 @@
     <string name="app_name">ClevertapExampleApplication</string>
     <string name="deeplinktitle">Welcome to Deeplink Activity</string>
     <string name="deeplinksubtitle">Internal deeplink test</string>
+    <string-array name="eventtype">
+        <item>Custom Event</item>
+        <item>Charged Event</item>
+    </string-array>
+
+    <string-array name="datatype">
+        <item>String</item>
+        <item>Integer</item>
+        <item>Double</item>
+    </string-array>
+
+    <string name="GPSAlertDialogTitle">GPS is setting</string>
+    <string name="GPSAlertDialogMessage">GPS is not enabled. Do you want to go to setting menu</string>
+
+    <string name="settings">Settings</string>
+    <string name="cancel">Cancel</string>
+    <string name="action_settings">Settings</string>
 </resources>

@@ -5,8 +5,10 @@ import android.app.Application
 import android.app.NotificationManager
 import android.os.Build
 import android.util.Log
+import com.clevertap.android.pushtemplates.PushTemplateNotificationHandler
 import com.clevertap.android.sdk.ActivityLifecycleCallback
 import com.clevertap.android.sdk.CleverTapAPI
+import com.clevertap.android.sdk.interfaces.NotificationHandler
 
 class MyApplication :Application() {
 
@@ -26,15 +28,12 @@ class MyApplication :Application() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             CleverTapAPI.createNotificationChannel(baseContext,"promotion","promotion","promotion",
                 NotificationManager.IMPORTANCE_MAX,true)
-
         }
+        CleverTapAPI.setNotificationHandler(PushTemplateNotificationHandler() as NotificationHandler);
+
     }
 
     fun getCleverTapInstance(): CleverTapAPI? {
         return cleverTapDefaultInstance
     }
-
-
-
-
 }

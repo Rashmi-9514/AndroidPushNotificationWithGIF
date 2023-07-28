@@ -1,4 +1,4 @@
-    <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -66,6 +66,16 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/etMobile" />
+
+                <EditText
+                    android:id="@+id/etUserProperty"
+                    android:hint="Enter Value for User Type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnLogin"
+                    />
                 <Button
                     android:id="@+id/btnPushProfile"
                     android:layout_width="match_parent"
@@ -73,7 +83,7 @@
                     android:text="Push Profile"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/btnLogin" />
+                    app:layout_constraintTop_toBottomOf="@id/etUserProperty" />
 
                 <Button
                     android:id="@+id/btnPushEvent"
@@ -93,6 +103,97 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/btnPushEvent" />
 
+
+
+                <Button
+                    android:id="@+id/btnPushEventForPushNotification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Push Notification"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPushEventProperty" />
+
+                <Button
+                    android:id="@+id/btnPushEventForPushNotificationAppInbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Push + App Inbox"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPushEventForPushNotification" />
+
+                <Button
+                    android:id="@+id/btnPushEventForPushTemplates"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Push Templates"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPushEventForPushNotificationAppInbox" />
+
+                <Button
+                    android:id="@+id/btnPushEventForInApp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="In-App"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPushEventForPushTemplates" />
+
+                <Button
+                    android:id="@+id/btnPushEventForCustomInApp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Custom In-App"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPushEventForInApp" />
+
+                <Button
+                    android:id="@+id/btnPushEventForUserRating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="User Rating"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPushEventForCustomInApp" />
+
+                <Button
+                    android:id="@+id/btnPushEventForNPSRating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NPS Rating"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPushEventForUserRating" />
+
+                <Button
+                    android:id="@+id/btnPushEventForLeadGenerationText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lead Generation - Text"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPushEventForNPSRating" />
+
+                <Button
+                    android:id="@+id/btnPushEventForLeadGenerationImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lead Generation - Image"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPushEventForLeadGenerationText" />
+
+                <Button
+                    android:id="@+id/btnPushEventForAppInbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="App Inbox"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPushEventForLeadGenerationImage" />
                 <Button
                     android:id="@+id/btnPushCharged"
                     android:layout_width="match_parent"
@@ -100,13 +201,13 @@
                     android:text="Charged"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/btnPushEventProperty" />
+                    app:layout_constraintTop_toBottomOf="@id/btnPushEventForAppInbox" />
 
                 <Button
                     android:id="@+id/btnAppInbox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="App Inbox"
+                    android:text="Open App Inbox"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/btnPushCharged" />
@@ -154,6 +255,70 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/btnNativeDisplay" />
+
+                <Button
+                    android:id="@+id/btnStopLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Stop Location"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnGetLocation" />
+
+
+                <Button
+                    android:id="@+id/btnPromtNotificationPermission"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Prompt Notification Permission"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnStopLocation" />
+
+                <Button
+                    android:id="@+id/btnRaiseCustomEvent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Raise Custom Event"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnPromtNotificationPermission" />
+
+                <Button
+                    android:id="@+id/btnWebView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Open Webview"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnRaiseCustomEvent" />
+
+                <Button
+                    android:id="@+id/btnInitGeofence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Initialise Geofence"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnWebView" />
+
+                <Button
+                    android:id="@+id/btnTriggerLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Trigger Location"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnInitGeofence" />
+
+                <Button
+                    android:id="@+id/btnDeactivateGeofence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deactivate Geofence"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnTriggerLocation" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
